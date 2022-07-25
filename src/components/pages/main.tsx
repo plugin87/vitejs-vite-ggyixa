@@ -16,6 +16,11 @@ const Main: FC<MainProps> = ({ setView }) => {
       />
       <main>
         <div className="p-4">
+          <div className="text-right underline">
+            <a className="text-gray-400 hover:text-gray-600" href="#">
+              0x039E0Ef84C7c8B365
+            </a>
+          </div>
           <div className="flex pb-5">
             <label htmlFor="">Show/Hide traits</label>
           </div>
