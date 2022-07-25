@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-content {
+  width: 400px;
+  height: 600px;
+  max-width: 100%;
+  max-height: 600px;
+  overflow: auto;
+}
