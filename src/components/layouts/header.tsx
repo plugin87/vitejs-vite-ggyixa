@@ -14,7 +14,7 @@ const NavHeader: FC<NavHeader> = ({ onBack, setView }) => {
         <a
           href="#"
           onClick={(e) => {
-            setView('home');
+            setView('main');
           }}
         >
           <svg
@@ -193,7 +193,7 @@ const NavHeader: FC<NavHeader> = ({ onBack, setView }) => {
                       tabIndex={-1}
                       id="menu-item-0"
                       onClick={() => {
-                        setView('setting');
+                        setView('settings');
                       }}
                     >
                       Account settings

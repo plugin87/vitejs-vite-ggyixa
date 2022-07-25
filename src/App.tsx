@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Login from './components/pages/login';
 import Main from './components/pages/main';
+import Setting from './components/pages/setting';
 
 type AppView = 'main' | 'login' | 'settings';
 
@@ -12,7 +13,7 @@ function App() {
     <div className="w-screen h-screen min-w-0 min-h-0 flex justify-center items-center">
       {view === 'main' && <Main setView={setView} />}
       {view === 'login' && <Login setView={setView} />}
-      {view === 'settings' && <Login setView={setView} />}
+      {view === 'settings' && <Setting setView={setView} />}
     </div>
   );
 }
