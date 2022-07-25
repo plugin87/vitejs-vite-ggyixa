@@ -1,5 +1,5 @@
 import { Menu } from '@headlessui/react';
-import { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
 
 export interface NavHeader {
   onBack: () => void;
@@ -7,6 +7,7 @@ export interface NavHeader {
 }
 
 const NavHeader: FC<NavHeader> = ({ onBack, setView }) => {
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   return (
     <nav className="w-full bg-pink-500 px-2 py-2">
       <div className="flex w-full justify-between items-center">
@@ -112,12 +113,13 @@ const NavHeader: FC<NavHeader> = ({ onBack, setView }) => {
           </svg>
         </a>
 
-        <div className="w-10 flex">
+        <div className="w-14 flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             width="32"
             height="32"
+            className="w-12"
             fill="none"
             viewBox="0 0 32 32"
           >
@@ -145,21 +147,62 @@ const NavHeader: FC<NavHeader> = ({ onBack, setView }) => {
               ></image>
             </defs>
           </svg>
-          <Menu>
-            <Menu.Button>More</Menu.Button>
-            <Menu.Items>
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    className={`${active && 'bg-blue-500'}`}
-                    href="/account-settings"
+
+          <div>
+            <div className="relative text-left">
+              <div>
+                <button
+                  type="button"
+                  className="inline-flex justify-center w-full rounded-md py-2 bg-tranparent text-sm font-medium text-gray-700"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    setShowMenu(!showMenu);
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
                   >
-                    Account settings
-                  </a>
-                )}
-              </Menu.Item>
-            </Menu.Items>
-          </Menu>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {showMenu && (
+                <div
+                  className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabIndex={-1}
+                >
+                  <div className="py-1" role="none">
+                    <a
+                      href="#"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabIndex={-1}
+                      id="menu-item-0"
+                      onClick={() => {
+                        setView('setting');
+                      }}
+                    >
+                      Account settings
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
